@@ -1,0 +1,1 @@
+This is a project in which some built-in methods from the Enumerable module are recreated. This project largely uses the Ruby blocks concept.
