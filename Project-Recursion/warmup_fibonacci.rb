@@ -1,3 +1,5 @@
+#The Fibonacci Sequence, which sums each number with the one before it,
+# is a great example of a problem that can be solved recursively.
 def fibs(n)
   arr = [0]
   if n == 1
@@ -13,6 +15,7 @@ def fibs(n)
   arr
 end
 
+#Recursive Fibonacci
 def fibs_rec(n)
   return [0] if n == 0
   return [0, 1] if n == 1
