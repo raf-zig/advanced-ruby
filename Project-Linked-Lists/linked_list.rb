@@ -49,5 +49,15 @@ class LinkedList
     @tail.value
   end
 
-  
+  def at(index)
+    return 'nil' if index > self.size - 1
+    if index == 0
+      return @head.value
+    end
+    current_node = @head
+    index.times do
+      current_node.next_node
+    end
+    current_node.value
+  end
 end
