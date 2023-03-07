@@ -7,8 +7,20 @@ class Node
 end
 
 class LinkedList
-  attr_accessor :head
-  def initialize
-    @head = nil
+  attr_accessor :head, :tail
+  # @head - the first node of the list
+  # @tail - the last node of the list
+  def initialize(value)
+    @head = Node.new(value)
+    @tail = nil
   end
+
+  def append(value)
+    node = Node.new(value)
+    # the pointer to the next node in the list is called at the last node in the list
+    # and a new node is assigned to it
+    @tail.next_node = node
+    # the last node in the list becomes the new node
+    @tail = node
+   end
 end
