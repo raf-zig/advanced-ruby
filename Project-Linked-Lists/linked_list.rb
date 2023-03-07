@@ -11,8 +11,9 @@ class LinkedList
   # @head - the first node of the list
   # @tail - the last node of the list
   def initialize(value)
-    @head = Node.new(value)
-    @tail = nil
+    node = Node.new(value)
+    @head = node
+    @tail = node
   end
 
   def append(value)
@@ -22,5 +23,11 @@ class LinkedList
     @tail.next_node = node
     # the last node in the list becomes the new node
     @tail = node
-   end
+  end
+
+  def prepend(value)
+    node = Node.new(value)
+    node.next_node = @head
+    @head = node
+  end
 end
