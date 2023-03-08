@@ -1,4 +1,4 @@
-Created as part of The Odin Project curriculum.
+Created as part of [The Odin Project](https://www.theodinproject.com) curriculum.
 
 The task is to create the following methods in a linked list class:
 
