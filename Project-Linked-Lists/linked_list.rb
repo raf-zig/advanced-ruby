@@ -102,4 +102,29 @@ class LinkedList
     end
     print 'nil'
   end
+
+  def insert_at(value, index)
+    count = 0
+    current_node = @head
+    until count == index
+      current_node = current_node.next_node
+      count += 1
+    end
+    current_node_+_1 = current_node.next_node
+    new_node = Node.new(value)
+    current_node.next_node = new_node
+    new_node.next_node = current_node_+_1 
+  end
+
+  def remove_at(index)
+    count = 0
+    current_node = @head
+    until count == index
+      current_node = current_node.next_node
+      count += 1
+    end
+    current_node_+_1 = current_node.next_node
+    current_node_+_2 = current_node_+_1.next_node
+    current_node.next_node = current_node_+_2
+  end
 end
