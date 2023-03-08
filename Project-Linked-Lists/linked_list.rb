@@ -60,4 +60,16 @@ class LinkedList
     end
     current_node.value
   end
+
+  def pop
+    if self.size != 1
+      current_node = @head
+      until current_node.next_node == @tail
+        current_node = current_node.next_node
+      end
+      current_node.next_node = nil
+      @tail = current_node
+    end  
+  end
+  
 end
