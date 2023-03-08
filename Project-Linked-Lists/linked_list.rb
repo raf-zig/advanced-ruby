@@ -95,5 +95,11 @@ class LinkedList
     return count
   end
 
-  
+  def to_s
+    current_node = @head
+    until current_node.next_node == nil
+      print "( #current_node.value ) ->"
+    end
+    print 'nil'
+  end
 end
