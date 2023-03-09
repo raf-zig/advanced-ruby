@@ -73,7 +73,7 @@ class LinkedList
     end  
   end
   
-  def contains?(value)
+  def contains?(value) 
     current_node = @head
     until current_node.value == value
       return false if current_node.next_node == nil
@@ -82,8 +82,8 @@ class LinkedList
     return true
   end
 
-  def find(value)
-    count = 1
+  def find(value) 
+    count = 0
     current_node = @head
     until current_node.value == value
       current_node = current_node.next_node
@@ -95,8 +95,10 @@ class LinkedList
 
   def to_s
     current_node = @head
+    print "( #{current_node.value} ) -> "
     until current_node.next_node == nil
-      print "( #current_node.value ) ->"
+      current_node = current_node.next_node
+      print "( #{current_node.value} ) -> "
     end
     print 'nil'
   end

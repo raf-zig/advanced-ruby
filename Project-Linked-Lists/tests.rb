@@ -16,3 +16,6 @@ linked_list.prepend(6)
 #linked_list.pop
 #p linked_list.contains?(45)
 #p linked_list.contains?(7)
+#p linked_list.find(9)
+#p linked_list.find(45)
+#linked_list.to_s
