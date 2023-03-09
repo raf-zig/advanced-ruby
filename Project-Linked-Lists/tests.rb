@@ -10,6 +10,9 @@ linked_list.prepend(6)
 #p linked_list.size
 #p linked_list.head
 #p linked_list.tail
-p linked_list.at(2)
-p linked_list.at(0)
-p linked_list.at(10)
+#p linked_list.at(2)
+#p linked_list.at(0)
+#p linked_list.at(10)
+#linked_list.pop
+#p linked_list.contains?(45)
+#p linked_list.contains?(7)

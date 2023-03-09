@@ -63,7 +63,7 @@ class LinkedList
   end
 
   def pop
-    if self.size != 1
+    if self.size > 1
       current_node = @head
       until current_node.next_node == @tail
         current_node = current_node.next_node
@@ -76,13 +76,10 @@ class LinkedList
   def contains?(value)
     current_node = @head
     until current_node.value == value
+      return false if current_node.next_node == nil
       current_node = current_node.next_node
     end
-    if current_node.value == value
-      return true
-    else  
-      return false
-    end
+    return true
   end
 
   def find(value)
