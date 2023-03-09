@@ -125,8 +125,8 @@ class LinkedList
       current_node = current_node.next_node
       count += 1
     end
-    current_node1 = current_node.next_node
-    current_node2 = current_node1.next_node
-    current_node.next_node = current_node2
+    current_node_next = current_node.next_node
+    current_node_next_next = current_node_next.next_node
+    current_node.next_node = current_node_next_next
   end
 end

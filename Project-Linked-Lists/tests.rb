@@ -20,4 +20,5 @@ linked_list.prepend(6)
 #p linked_list.find(45)
 #linked_list.insert_at(11, 9)
 #linked_list.insert_at(11, 4)
-linked_list.to_s
+#linked_list.remove_at(3)
+#linked_list.remove_at(9)
