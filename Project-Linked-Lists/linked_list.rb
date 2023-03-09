@@ -53,12 +53,13 @@ class LinkedList
     return 'nil' if index > self.size - 1
     if index == 0
       return @head.value
+    else
+      current_node = @head
+      index.times do
+        current_node = current_node.next_node
+      end
     end
-    current_node = @head
-    index.times do
-      current_node.next_node
-    end
-    current_node.value
+    return current_node.value
   end
 
   def pop
@@ -110,10 +111,10 @@ class LinkedList
       current_node = current_node.next_node
       count += 1
     end
-    current_node_+_1 = current_node.next_node
+    current_node1 = current_node.next_node
     new_node = Node.new(value)
     current_node.next_node = new_node
-    new_node.next_node = current_node_+_1 
+    new_node.next_node = current_node1 
   end
 
   def remove_at(index)
@@ -123,8 +124,8 @@ class LinkedList
       current_node = current_node.next_node
       count += 1
     end
-    current_node_+_1 = current_node.next_node
-    current_node_+_2 = current_node_+_1.next_node
-    current_node.next_node = current_node_+_2
+    current_node1 = current_node.next_node
+    current_node2 = current_node1.next_node
+    current_node.next_node = current_node2
   end
 end
