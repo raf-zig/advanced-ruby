@@ -18,4 +18,6 @@ linked_list.prepend(6)
 #p linked_list.contains?(7)
 #p linked_list.find(9)
 #p linked_list.find(45)
-#linked_list.to_s
+#linked_list.insert_at(11, 9)
+#linked_list.insert_at(11, 4)
+linked_list.to_s

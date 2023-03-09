@@ -104,22 +104,24 @@ class LinkedList
   end
 
   def insert_at(value, index)
+    return puts "Error: you selected an index outside of the list" if index > self.size
     count = 0
     current_node = @head
-    until count == index
+    until count == (index - 1)
       current_node = current_node.next_node
       count += 1
     end
-    current_node1 = current_node.next_node
+    current_node_next = current_node.next_node
     new_node = Node.new(value)
     current_node.next_node = new_node
-    new_node.next_node = current_node1 
+    new_node.next_node = current_node_next
   end
 
   def remove_at(index)
+    return puts "Error: you selected an index outside of the list" if index > self.size
     count = 0
     current_node = @head
-    until count == index
+    until count == (index - 1)
       current_node = current_node.next_node
       count += 1
     end
