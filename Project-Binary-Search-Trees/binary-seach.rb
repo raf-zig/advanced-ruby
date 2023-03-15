@@ -61,5 +61,15 @@ class Tree
     current = current.left until current.left.nil?
     current 
   end
+
+  def find(data, node = root)
+    return node if node.nil? || node.data == data
+
+    if data < node.data
+      find(data, node.left)
+    elsif data > node.data
+      find(data, node.right)
+    end
+  end
 end
 
