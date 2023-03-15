@@ -37,5 +37,29 @@ class Tree
     node
   end
  
+  def delete(data, node = root)
+    return if node.nil?
+
+    if data  < node.data
+      node.left = delete(data, node.left)
+    elsif data > node.data
+      node.right = delete(data, node.right)
+    else
+    # node with only one child element or no child element
+    return node.right if node.left.nil?
+    return node.left if node.right.nil?
+
+    # node with two child elements
+    min_node = min_value_node(node.right)
+    node.data = min_node.data
+    node.right = delete(min_node.data, node.right)
+    end
+  end
+
+  def min_value_node(node)
+    current = node
+    current = current.left until current.left.nil?
+    current 
+  end
 end
 
