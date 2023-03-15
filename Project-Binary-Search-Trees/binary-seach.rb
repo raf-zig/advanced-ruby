@@ -26,7 +26,16 @@ class Tree
     node
   end
   
+  def insert(data, node = root)
+    return Node.new(data) if node.nil?
 
+    if data < node.data
+      node.left = insert(data, node.left)
+    elsif data > node.data
+      node.right = insert(data, node.right)
+    end
+    node
+  end
  
 end
 
