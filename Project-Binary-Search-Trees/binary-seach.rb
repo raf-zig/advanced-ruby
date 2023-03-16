@@ -87,5 +87,34 @@ class Tree
     result
   end
   
+  def inorder(node = root, result = [])
+    return result if node.nil?
+
+    inorder(node.left, result)
+    result << node.data
+    inorder(node.right, result)
+
+    result
+  end
+
+  def preorder(node = root, result = [])
+    return result if node.nil?
+
+    result << node.data
+    preorder(node.left, result)
+    preorder(node.right, result)
+
+    result
+  end
+
+  def postorder(node = root, result = [])
+    return result if node.nil?
+
+    postorder(node.left, result)
+    postorder(node.right, result)
+    result << node.data
+
+    result
+  end
 end
 
