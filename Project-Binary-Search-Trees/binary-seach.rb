@@ -1,7 +1,7 @@
 class Node
   attr_accessor :data, :left, :right
 
-  def initialize(data, left, right)
+  def initialize(data)
     @data = data
     @left = nil
     @right = nil
@@ -22,10 +22,17 @@ class Tree
     mid  = arr.length / 2
     node  = Node.new(arr[mid])
     node.left = build_tree(arr[0...mid])
-    node.right = build_tree(arr[mid + 1..)
+    node.right = build_tree(arr[mid + 1..])
     node
   end
-  
+
+  #pretty_print method that a student wrote and shared in the www.theodinproject.com
+  def pretty_print(node = root, prefix = '', is_left = true)
+    pretty_print(node.right, "#{prefix}#{is_left ? '│ ' : ' '}", false) if node.right
+    puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
+    pretty_print(node.left, "#{prefix}#{is_left ? ' ' : '│ '}", true) if node.left
+  end
+
   def insert(data, node = root)
     return Node.new(data) if node.nil?
 
@@ -82,7 +89,6 @@ class Tree
       result << current.data
       queue << current.left unless current.left.nil?
       queue << current.right unless current.right.nil?  
-      end
     end
     result
   end
@@ -138,5 +144,30 @@ class Tree
       depth(node, current.right, level + 1)
     end
   end
+
+  def balanced?(node = root)
+    return true if node.nil?
+
+    left_height = height(node.left)
+    right_height = height(node.right)
+    return false if (left_height - right_height).abs > 1
+
+    balanced?(node.left) && balanced?(node.right)
+  end
+
+  def rebalance
+    @root = build_tree(level_order)
+  end
 end
 
+tree = Tree.new(Array.new(15) { rand(1..100) })
+tree.pretty_print
+
+puts "Level order: #{tree.level_order}"
+puts "Inorder: #{tree.inorder}"
+puts "Preorder: #{tree.preorder}"
+puts "Postorder: #{tree.postorder}"
+
+puts "Height: #{tree.height}"
+puts "Depth: #{tree.depth(tree.find(50))}"
+puts "Balanced?: #{tree.balanced?}"
