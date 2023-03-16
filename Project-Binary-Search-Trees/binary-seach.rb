@@ -38,7 +38,7 @@ class Tree
   end
  
   def delete(data, node = root)
-    return if node.nil?
+    return nil if node.nil?
 
     if data  < node.data
       node.left = delete(data, node.left)
@@ -71,5 +71,21 @@ class Tree
       find(data, node.right)
     end
   end
+
+  def level_order(node = root)
+    return nil if node.nil?
+
+    queue = [node]
+    result = []
+    until queue.empty?
+      current = queue.shift
+      result << current.data
+      queue << current.left unless current.left.nil?
+      queue << current.right unless current.right.nil?  
+      end
+    end
+    result
+  end
+  
 end
 
