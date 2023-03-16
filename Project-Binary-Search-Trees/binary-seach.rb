@@ -116,5 +116,27 @@ class Tree
 
     result
   end
+
+  def height(node = root)
+    return 0 if node.nil?
+
+    left = height(node.left)
+    right = height(node.right)
+    if left > right
+      return left + 1
+    else
+      right + 1
+    end
+  end
+
+  def depth(node, current = root, level = 0)
+    return level if node == current || current.nil?
+
+    if node.data < current.data
+      depth(node, current.left, level + 1)
+    else
+      depth(node, current.right, level + 1)
+    end
+  end
 end
 
