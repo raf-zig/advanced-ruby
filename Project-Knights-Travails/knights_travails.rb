@@ -6,8 +6,6 @@ class Knight
     @parent = parent
     @children = []
   end
-
-
 end
 
 class Board
@@ -20,7 +18,10 @@ class Board
         return find_path(current)
       end
       current.children = possible_moves(current.position)
-
+      current.children.each do |child|
+        child.parent = current
+        queue << child
+      end
     end
   end
 
@@ -30,7 +31,9 @@ class Board
       path << element.position
       element = element.parent
     end
-    path.reverse
+    path.reverse!
+    puts "You made it in #{path.size} moves!  Here's your path:"
+    path.each { |i| puts "#{i}\n" }
   end
 
   def possible_moves(position)
@@ -47,6 +50,9 @@ class Board
   end
 
   def valid_move?(move)
-    move[0].between?(0, 7) && move[1].between?(0, 7)
+    move[0].between?(1, 8) && move[1].between?(1, 8)
   end
 end
+
+new_game = Board.new
+new_game.knight_moves([1, 3], [8, 8])
