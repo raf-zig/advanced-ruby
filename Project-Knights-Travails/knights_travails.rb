@@ -15,8 +15,21 @@ class Board
     knight = Knight.new(start)
     queue = [knight]
     until queue.empty?
-      
+      current = queue.shift
+      if current.position == finish
+        return find_path(current)
+      end
     end
   end
-  
+
+  def find_path(element)
+    path = []
+    while element
+      path << element.position
+      element = element.parent
+    end
+    path.reverse
+  end
+
+
 end
