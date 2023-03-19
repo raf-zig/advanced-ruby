@@ -7,5 +7,16 @@ class Knight
     @children = []
   end
 
+
+end
+
+class Board
+  def knight_moves(start, finish)
+    knight = Knight.new(start)
+    queue = [knight]
+    until queue.empty?
+      
+    end
+  end
   
 end
