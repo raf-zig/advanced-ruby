@@ -19,6 +19,8 @@ class Board
       if current.position == finish
         return find_path(current)
       end
+      current.children = possible_moves(current.position)
+
     end
   end
 
@@ -31,5 +33,20 @@ class Board
     path.reverse
   end
 
+  def possible_moves(position)
+    moves = []
+    moves << [position[0] + 2, position[1] + 1]
+    moves << [position[0] + 2, position[1] - 1]
+    moves << [position[0] - 2, position[1] + 1]
+    moves << [position[0] - 2, position[1] - 1]
+    moves << [position[0] + 1, position[1] + 2]
+    moves << [position[0] + 1, position[1] - 2]
+    moves << [position[0] - 1, position[1] + 2]
+    moves << [position[0] - 1, position[1] - 2]
+    moves.select { |move| valid_move?(move) }.map { |move| Knight.new(move) }
+  end
 
+  def valid_move?(move)
+    move[0].between?(0, 7) && move[1].between?(0, 7)
+  end
 end
