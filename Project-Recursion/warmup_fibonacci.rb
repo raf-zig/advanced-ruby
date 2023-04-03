@@ -23,5 +23,5 @@ def fibs_rec(n)
   arr << arr[-2] + arr[-1]
 end
 
-p fibs (5)
+p fibs(5)
 p fibs_rec(5)
