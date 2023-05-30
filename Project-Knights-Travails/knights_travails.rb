@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Knight
   attr_accessor :position, :parent, :children
 
@@ -14,9 +16,8 @@ class Board
     queue = [knight]
     until queue.empty?
       current = queue.shift
-      if current.position == finish
-        return find_path(current)
-      end
+      return find_path(current) if current.position == finish
+
       current.children = possible_moves(current.position)
       current.children.each do |child|
         child.parent = current

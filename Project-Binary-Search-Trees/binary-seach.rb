@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Node
   attr_accessor :data, :left, :right
 
@@ -19,14 +21,14 @@ class Tree
   def build_tree(arr)
     return nil if arr.empty?
 
-    mid  = arr.length / 2
-    node  = Node.new(arr[mid])
+    mid = arr.length / 2
+    node = Node.new(arr[mid])
     node.left = build_tree(arr[0...mid])
     node.right = build_tree(arr[mid + 1..])
     node
   end
 
-  #pretty_print method that a student wrote and shared in the www.theodinproject.com
+  # pretty_print method that a student wrote and shared in the www.theodinproject.com
   def pretty_print(node = root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│ ' : ' '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
@@ -43,30 +45,30 @@ class Tree
     end
     node
   end
- 
+
   def delete(data, node = root)
     return nil if node.nil?
 
-    if data  < node.data
+    if data < node.data
       node.left = delete(data, node.left)
     elsif data > node.data
       node.right = delete(data, node.right)
     else
-    # node with only one child element or no child element
-    return node.right if node.left.nil?
-    return node.left if node.right.nil?
+      # node with only one child element or no child element
+      return node.right if node.left.nil?
+      return node.left if node.right.nil?
 
-    # node with two child elements
-    min_node = min_value_node(node.right)
-    node.data = min_node.data
-    node.right = delete(min_node.data, node.right)
+      # node with two child elements
+      min_node = min_value_node(node.right)
+      node.data = min_node.data
+      node.right = delete(min_node.data, node.right)
     end
   end
 
   def min_value_node(node)
     current = node
     current = current.left until current.left.nil?
-    current 
+    current
   end
 
   def find(data, node = root)
@@ -88,11 +90,11 @@ class Tree
       current = queue.shift
       result << current.data
       queue << current.left unless current.left.nil?
-      queue << current.right unless current.right.nil?  
+      queue << current.right unless current.right.nil?
     end
     result
   end
-  
+
   def inorder(node = root, result = [])
     return result if node.nil?
 
@@ -128,11 +130,9 @@ class Tree
 
     left = height(node.left)
     right = height(node.right)
-    if left > right
-      return left + 1
-    else
-      right + 1
-    end
+    return left + 1 if left > right
+
+    right + 1
   end
 
   def depth(node, current = root, level = 0)

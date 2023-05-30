@@ -1,21 +1,21 @@
+# frozen_string_literal: true
+
 module Enumerable
-  def my_each 
-    for element in self
-      yield element
-    end
+  def my_each(&block)
+    each(&block)
   end
 
   def my_each_with_index
     i = 0
-    for element in self
+    each do |element|
       yield element, i
-      i += 1 
+      i += 1
     end
   end
 
   def my_select
     arr = []
-    for element in self
+    each do |element|
       arr << element if yield element
     end
     arr
@@ -23,7 +23,7 @@ module Enumerable
 
   def my_all?
     x = true
-    for element in self
+    each do |element|
       x = false unless yield element
     end
     x
@@ -31,7 +31,7 @@ module Enumerable
 
   def my_any?
     x = false
-    for element in self
+    each do |element|
       x = true if yield element
     end
     x
@@ -39,7 +39,7 @@ module Enumerable
 
   def my_none?
     x = 0
-    for element in self
+    each do |element|
       x = false if yield element
     end
     x
@@ -47,7 +47,7 @@ module Enumerable
 
   def my_count
     x = []
-    for element in self
+    each do |element|
       x << element if yield element
     end
     x.size
@@ -55,16 +55,16 @@ module Enumerable
 
   def my_map
     x = []
-    for element in self
+    each do |element|
       y = yield element
       x << y
     end
     x
   end
 
-  def my_inject (value = 0)
-     new_value = value
-    for element in self
+  def my_inject(value = 0)
+    new_value = value
+    each do |element|
       new_value = yield(new_value, element)
     end
     new_value
@@ -77,7 +77,7 @@ puts ' my_each'
 n.my_each { |v| print v }
 puts
 n.each { |v| print v }
-puts 
+puts
 
 puts ' my_each_with_index'
 n.my_each_with_index { |v, i| print "item - #{v},index - #{i}  " }
@@ -87,7 +87,7 @@ puts
 
 puts ' my_select'
 p n.my_select { |v| v > 5 }
-p n.select { |v| v > 5 } 
+p n.select { |v| v > 5 }
 
 puts ' my_all?'
 p n.my_all? { |v| v / 2 == 2 }
@@ -111,4 +111,4 @@ p n.map { |v| v / 2  }
 
 puts ' my_inject'
 p n.my_inject { |sum, v| sum + v }
-p n.inject { |sum, v| sum + v } 
+p n.inject { |sum, v| sum + v }
